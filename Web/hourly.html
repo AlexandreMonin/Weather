@@ -13,13 +13,25 @@
     <title>Relevé horaire</title>
 </head>
 <body>
-<div>
-    <h3 id="title">Relevé dans l'heure</h3>
+<div class="container">
+    <h3 id="title" class="mb-3 mt-3 text-center">Relevé dans l'heure</h3>
 
-    <a href="index.html" class="btn btn-primary">Relevé dans la journée</a>
-    <a href="Sonde/add.html" class="btn btn-primary">Ajouter une sonde</a>
+    <a href="index.html" class="btn btn-primary mb-3">Relevé dans la journée</a>
+    <a href="Sonde/List.html" class="btn btn-primary mb-3">Voir les sonde</a>
 
-    <canvas id="myChart" class="w-75 h-50"></canvas>
+    <canvas id="myChart" class="w-100 h-50 mb-3"></canvas>
+
+            <table class="table table-bordered w-100">
+        <thead>
+        <tr>
+            <th>Heure</th>
+            <th>Température</th>
+            <th>Humidité</th>
+        </tr>
+        </thead>
+        <tbody id="table-body">
+        </tbody>
+    </table>
 </div>
 </body>
 

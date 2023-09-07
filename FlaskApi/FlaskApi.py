@@ -129,3 +129,37 @@ class addSonde(Resource):
         conn.commit()
 
         return {"message": "Informations ajoutées en base de données"}, 200
+
+@api.route("/updateSonde/<id>", methods=['PUT'])
+@api.expect(sonde)
+class updateSonde(Resource):
+
+    def put(self, id):
+        data = request.get_json()
+
+        # insert the temperature and humidity in database
+        db.execute(
+            f"UPDATE sonde SET Name = '{data['name']}', `Longitude` = '{data['longitude']}', `Latitude` = '{data['latitude']}' WHERE Id = {int(id)}")
+
+        # save in database
+        conn.commit()
+
+        return {"message": "Informations ajoutées en base de données"}, 200
+
+
+
+@api.route("/listSonde", methods=['GET'])
+class ListSonde(Resource):
+    def get(self):
+        db.execute("SELECT * FROM sonde")
+        sondes = db.fetchall()
+        elements = []
+
+        for sonde in sondes:
+            elements.append({
+                "name": sonde[1],
+                "longitude": sonde[2],
+                "latitude": sonde[3],
+            })
+
+        return elements
